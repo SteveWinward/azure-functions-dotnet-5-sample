@@ -3,7 +3,7 @@ Sample GitHub Actions CI/CD Pipeline for Azure Function .NET 5 Isolated Process
 
 ## Setup Notes
 
-1. Clone this repo
+1. Clone/fork this repo
 2. Create an Azure Function resource in your own Azure subscription
 3. Create an AAD Service Principal that has contribute permissions to the Azure Function resource
 
