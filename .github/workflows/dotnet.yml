@@ -20,14 +20,16 @@ jobs:
     runs-on: ubuntu-latest
     
     steps:
-      - uses: azure/login@v1
+      - name: Authenticate to Azure as a Service Principal
+        uses: azure/login@v1
         with:
           creds: ${{ secrets.AZURE_CREDS_FUNCTION_APP }}
           
       - name: List the Azure Service Principal Info
         run: az account list
     
-      - uses: actions/checkout@v2
+      - name: Get the latest source code commit
+        uses: actions/checkout@v2
       
       - name: List project files before build.settings.json rename
         run: tree
