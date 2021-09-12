@@ -43,19 +43,19 @@ jobs:
         
       - name: Restore dependencies
         run: dotnet restore
-        working-directory: ROOT_SOLUTION_PATH
+        working-directory: ${{ env.ROOT_SOLUTION_PATH }}
 
       - name: Build for Testing
         run: dotnet build --no-restore
-        working-directory: ROOT_SOLUTION_PATH
+        working-directory: ${{ env.ROOT_SOLUTION_PATH }}
       
       - name: Test
         run: dotnet test --no-build --verbosity normal
-        working-directory: ROOT_SOLUTION_PATH
+        working-directory: ${{ env.ROOT_SOLUTION_PATH }}
       
       - name: Clean debug configuration output
         run: dotnet clean
-        working-directory: ROOT_SOLUTION_PATH
+        working-directory: ${{ env.ROOT_SOLUTION_PATH }}
       
       - name: Build Function App for Release
         run: dotnet build ${{ env.AZURE_FUNCTION_PROJ_PATH }} --configuration Release
