@@ -4,13 +4,14 @@ Sample GitHub Actions CI/CD Pipeline for Azure Function .NET 5 Isolated Process
 ## Setup Notes
 
 1. Clone/fork this repo
+2. Create a local file in the root of the Sample.FunctionApp project local.settings.json. There is a .gitignore setting to not check this file into source code. 
 2. Create an Azure Function resource in your own Azure subscription
 3. Create an AAD Service Principal that has contribute permissions to the Azure Function resource. Easiest way to do this is to launch the [Azure Cloud Shell](https://docs.microsoft.com/en-us/azure/cloud-shell/overview) in the Azure Portal
 
 ```
 az ad sp create-for-rbac --name "<FUNCTION_APP_NAME>-sp" --sdk-auth --role contributor --scopes /subscriptions/<SUBSCRIPTION_GUID>/resourcegroups/<RESOURCE_GROUP>/providers/Microsoft.Web/sites/<FUNCTION_APP_NAME>
 ```
-4. Save the output of the operation and save that to a [GitHub Action Secret](https://docs.github.com/en/actions/reference/encrypted-secrets) with the name ```AZURE_CREDS_FUNCTION_APP```
+4. Save the entire JSON output of the operation and save that to a [GitHub Action Secret](https://docs.github.com/en/actions/reference/encrypted-secrets) with the name ```AZURE_CREDS_FUNCTION_APP```
 5. Update the ```dotnet.yml``` file to specify the actual Azure Function resource name you created previously
 
 ```yaml
