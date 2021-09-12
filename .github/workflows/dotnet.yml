@@ -24,9 +24,6 @@ jobs:
         uses: azure/login@v1
         with:
           creds: ${{ secrets.AZURE_CREDS_FUNCTION_APP }}
-          
-      - name: List the Azure Service Principal Info
-        run: az account list
     
       - name: Get the latest source code commit
         uses: actions/checkout@v2
