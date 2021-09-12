@@ -5,6 +5,17 @@ Sample GitHub Actions CI/CD Pipeline for Azure Function .NET 5 Isolated Process
 
 1. Clone/fork this repo
 2. Create a local file in the root of the Sample.FunctionApp project local.settings.json. There is a .gitignore setting to not check this file into source code. 
+
+```
+{
+    "IsEncrypted": false,
+    "Values": {
+        "AzureWebJobsStorage": "",
+        "FUNCTIONS_WORKER_RUNTIME": "dotnet-isolated"
+    }
+}
+```
+
 3. Create an Azure Function resource in your own Azure subscription
 4. Create an AAD Service Principal that has contribute permissions to the Azure Function resource. Easiest way to do this is to launch the [Azure Cloud Shell](https://docs.microsoft.com/en-us/azure/cloud-shell/overview) in the Azure Portal
 
