@@ -14,7 +14,7 @@ Sample GitHub Actions CI/CD Pipeline for Azure Function .NET 5 Isolated Process
     }
 }
 ```
-3. Create an Azure Function resource in your own Azure subscription
+3. Create an Azure Function resource in your own Azure subscription.  Public docs on how to do this can be found [here](https://docs.microsoft.com/en-us/azure/azure-functions/functions-create-function-app-portal#create-a-function-app).
 4. Create an AAD Service Principal that has contribute permissions to the Azure Function resource. Easiest way to do this is to launch the [Azure Cloud Shell](https://docs.microsoft.com/en-us/azure/cloud-shell/overview) in the Azure Portal
 ```Shell
 az ad sp create-for-rbac --name "<FUNCTION_APP_NAME>-sp" --sdk-auth --role contributor --scopes /subscriptions/<SUBSCRIPTION_GUID>/resourcegroups/<RESOURCE_GROUP>/providers/Microsoft.Web/sites/<FUNCTION_APP_NAME>
