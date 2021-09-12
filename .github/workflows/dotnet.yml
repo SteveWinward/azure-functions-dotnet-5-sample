@@ -1,0 +1,60 @@
+name: Test and Deploy
+
+on:
+  push:
+    branches: [ main ]
+    paths-ignore: 
+      - '**/README.md'
+      - '**/*.yml'
+  pull_request:
+    branches: [ main ]
+  workflow_dispatch:
+  
+env:
+  AZURE_FUNCTIONAPP_NAME: dotnet5-test-app # set this to the name of your azure function app resource
+  AZURE_FUNCTION_PROJ_PATH: src/Sample.FunctionApp  # set this to the path to your function app project
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - uses: azure/login@v1
+        with:
+          creds: ${{ secrets.AZURE_CREDS_FUNCTION_APP }}
+          
+      - name: List the Azure Service Principal Info
+        run: az account list
+    
+      - uses: actions/checkout@v2
+        
+      - name: Rename build.settings.json to local.settings.json
+        run: mv build.settings.json local.settings.json
+        working-directory: ${{ env.AZURE_FUNCTION_PROJ_PATH }}
+      
+      - run: tree
+        working-directory: ${{ env.AZURE_FUNCTION_PROJ_PATH }}
+
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v1
+        with:
+          dotnet-version: ${{ env.DOTNET_VERSION }}
+        
+      - name: Restore dependencies
+        run: dotnet restore     
+
+      - name: Build for Testing
+        run: dotnet build --no-restore
+      
+      - name: Test
+        run: dotnet test --no-build --verbosity normal   
+      
+      - name: Clean debug configuration output
+        run: dotnet clean
+      
+      - name: Build Function App for Release
+        run: dotnet build ${{ env.AZURE_FUNCTION_PROJ_PATH }} --configuration Release
+      
+      - run: npm i -g azure-functions-core-tools@3 --unsafe-perm true
+      - run: func azure functionapp publish ${{ env.AZURE_FUNCTIONAPP_NAME }}
+        working-directory: ${{ env.AZURE_FUNCTION_PROJ_PATH }}
