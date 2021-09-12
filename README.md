@@ -19,4 +19,6 @@ env:
   AZURE_FUNCTION_PROJ_PATH: src/Sample.FunctionApp  # set this to the path to your function app project
   ROOT_SOLUTION_PATH: src # set this to the root path of your solution/project file
 ```
-6. Kick off the GitHub Action to deploy your .NET 5 Isolated Process Azure Function App!
+6. The full YAML file can be found [here](.github/workflows/dotnet.yml)
+
+7. Kick off the GitHub Action to deploy your .NET 5 Isolated Process Azure Function App!
