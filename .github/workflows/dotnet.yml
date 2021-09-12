@@ -13,6 +13,7 @@ on:
 env:
   AZURE_FUNCTIONAPP_NAME: dotnet5-test-app # set this to the name of your azure function app resource
   AZURE_FUNCTION_PROJ_PATH: src/Sample.FunctionApp  # set this to the path to your function app project
+  ROOT_SOLUTION_PATH: src # set this to the root path of your solution/project file
 
 jobs:
   build:
@@ -41,16 +42,20 @@ jobs:
           dotnet-version: ${{ env.DOTNET_VERSION }}
         
       - name: Restore dependencies
-        run: dotnet restore     
+        run: dotnet restore
+        working-directory: ROOT_SOLUTION_PATH
 
       - name: Build for Testing
         run: dotnet build --no-restore
+        working-directory: ROOT_SOLUTION_PATH
       
       - name: Test
-        run: dotnet test --no-build --verbosity normal   
+        run: dotnet test --no-build --verbosity normal
+        working-directory: ROOT_SOLUTION_PATH
       
       - name: Clean debug configuration output
         run: dotnet clean
+        working-directory: ROOT_SOLUTION_PATH
       
       - name: Build Function App for Release
         run: dotnet build ${{ env.AZURE_FUNCTION_PROJ_PATH }} --configuration Release
