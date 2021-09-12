@@ -6,7 +6,7 @@ Sample GitHub Actions CI/CD Pipeline for Azure Function .NET 5 Isolated Process
 1. Clone/fork this repo
 2. Create a local file in the root of the Sample.FunctionApp project local.settings.json. There is a .gitignore setting to not check this file into source code. 
 
-```
+```json
 {
     "IsEncrypted": false,
     "Values": {
