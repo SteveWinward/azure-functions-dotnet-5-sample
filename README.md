@@ -1,5 +1,17 @@
 # Azure Functions .NET 5 Sample Project
-Sample GitHub Actions CI/CD Pipeline for Azure Function .NET 5 Isolated Process
+Sample GitHub Actions CI/CD Pipeline for Azure Function .NET 5 Isolated Process.
+
+Public docs for Azure Functions with the new .NET 5 isolated process setup can be found below,
+
+https://docs.microsoft.com/en-us/azure/azure-functions/dotnet-isolated-process-guide
+
+The public GitHub repo for the Azure Functions dotnet Worker is below,
+
+https://github.com/Azure/azure-functions-dotnet-worker
+
+And the public GitHub repo for the Azure Functions Core commandline tooling can be found here,
+
+https://github.com/Azure/azure-functions-core-tools
 
 ## Setup Notes
 
