@@ -36,7 +36,7 @@ az ad sp create-for-rbac --name "<FUNCTION_APP_NAME>-sp" --sdk-auth --role contr
 
 ![IAM Security View](misc/images/ServicePrincipalPermissions.png)
 
-6. Save the entire JSON output of the operation and save that to a [GitHub Action Secret](https://docs.github.com/en/actions/reference/encrypted-secrets) with the name ```AZURE_CREDS_FUNCTION_APP```
+6. Save the entire JSON output of the PowerShell operations to a [GitHub Action Secret](https://docs.github.com/en/actions/reference/encrypted-secrets) with the name ```AZURE_CREDS_FUNCTION_APP```.  This enables you to securely reference this credential in GitHub Actions to authenticate to Azure.
 7. Update the ```dotnet.yml``` file to specify the actual Azure Function resource name you created previously.  Snippet included below, the full YAML file can be found [here](.github/workflows/dotnet.yml)
 ```yaml
 env:
