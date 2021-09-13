@@ -40,10 +40,6 @@ jobs:
         run: dotnet test --no-build --verbosity normal
         working-directory: ${{ env.ROOT_SOLUTION_PATH }}
       
-      - name: Clean debug configuration output
-        run: dotnet clean
-        working-directory: ${{ env.ROOT_SOLUTION_PATH }}
-      
       - name: Build Function App for Release
         run: dotnet build --configuration Release --output ./output
         working-directory: ${{ env.AZURE_FUNCTION_PROJ_PATH }}
