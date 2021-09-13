@@ -56,5 +56,8 @@ env:
 See YAML file ```dotnet.yml``` [here](.github/workflows/dotnet.yml).
 
 1. Go to your Azure Function App overview blade.  Download the publish profile.  Open up the txt file and copy the entire contents.  
+
+![Download Publish Profile Image](misc/images/DownloadPublishProfile.png)
+
 2. Save the contents as a GitHub Action Secret titled ```AZURE_FUNCTION_PUBLISH_CREDS```
 3. Kick off the GitHub Action to deploy your .NET 5 Isotated Processs Azure Function App!
