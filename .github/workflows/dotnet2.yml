@@ -60,7 +60,13 @@ jobs:
       - name: Clean debug configuration output
         run: dotnet clean
         working-directory: ${{ env.ROOT_SOLUTION_PATH }}
-      
+            
       - name: Build Function App for Release
-        run: dotnet build --configuration Release --output ./output
+        run: dotnet build ${{ env.AZURE_FUNCTION_PROJ_PATH }} --configuration Release
+      
+      - name: Install Azure Functions Core Tools
+        run: npm i -g azure-functions-core-tools@3 --unsafe-perm true
+      
+      - name: Publish Azure Function App
+        run: func azure functionapp publish ${{ env.AZURE_FUNCTIONAPP_NAME }}
         working-directory: ${{ env.AZURE_FUNCTION_PROJ_PATH }}
