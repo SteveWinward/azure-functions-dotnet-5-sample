@@ -19,12 +19,7 @@ jobs:
   build:
     runs-on: ubuntu-latest
     
-    steps:
-      - name: Authenticate to Azure as a Service Principal
-        uses: azure/login@v1
-        with:
-          creds: ${{ secrets.AZURE_CREDS_FUNCTION_APP }}
-    
+    steps:    
       - name: Get the latest source code commit
         uses: actions/checkout@v2
       
