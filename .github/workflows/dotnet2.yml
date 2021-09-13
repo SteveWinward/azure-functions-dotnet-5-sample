@@ -1,4 +1,4 @@
-name: Test and Deploy (Functions Action)
+name: Test and Deploy (Functions Core Tooling)
 
 on:
   push:
