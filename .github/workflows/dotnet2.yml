@@ -1,13 +1,13 @@
 name: Test and Deploy (Functions Core Tooling)
 
 on:
-  push:
-    branches: [ main ]
-    paths-ignore: 
-      - '**/README.md'
-      - '**/*.yml'
-  pull_request:
-    branches: [ main ]
+  #push:
+  #  branches: [ main ]
+  #  paths-ignore: 
+  #    - '**/README.md'
+  #    - '**/*.yml'
+  #pull_request:
+  #  branches: [ main ]
   workflow_dispatch:
   
 env:
