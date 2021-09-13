@@ -61,3 +61,10 @@ See YAML file ```dotnet.yml``` [here](.github/workflows/dotnet.yml).
 
 2. Save the contents as a GitHub Action Secret titled ```AZURE_FUNCTION_PUBLISH_CREDS```
 3. Kick off the GitHub Action to deploy your .NET 5 Isotated Processs Azure Function App!
+
+
+> NOTE: if you see the following error, you need to remove the settting ```WEBSITE_RUN_FROM_PACKAGE ``` from the configuration blade of your Azure Function App in the Azure Portal,
+ 
+```
+When request Azure resource at PublishContent, zipDepoy : WEBSITE_RUN_FROM_PACKAGE in your function app is set to an URL. Please remove WEBSITE_RUN_FROM_PACKAGE app setting from your function app.
+```
