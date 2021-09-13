@@ -28,7 +28,7 @@ https://github.com/Azure/azure-functions-core-tools
 ```
 3. Create an Azure Function resource in your own Azure subscription.  Public docs on how to do this can be found [here](https://docs.microsoft.com/en-us/azure/azure-functions/functions-create-function-app-portal#create-a-function-app).
 
-## Deploying with the Azure Function Core Tools
+## Option 1: Deploying with the Azure Function Core Tools
 
 See YAML file ```dotnet2.yml``` [here](.github/workflows/dotnet2.yml).
 
@@ -51,7 +51,7 @@ env:
 ```
 5. Kick off the GitHub Action to deploy your .NET 5 Isolated Process Azure Function App!
 
-## Deploying with Azure Functions GitHub Action
+## Option 2: Deploying with Azure Functions GitHub Action
 
 See YAML file ```dotnet.yml``` [here](.github/workflows/dotnet.yml).
 
