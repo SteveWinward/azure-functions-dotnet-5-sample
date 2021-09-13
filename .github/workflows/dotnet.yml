@@ -62,17 +62,8 @@ jobs:
         working-directory: ${{ env.ROOT_SOLUTION_PATH }}
       
       - name: Build Function App for Release
-        run: |
-          pushd './${{ env.AZURE_FUNCTION_PROJ_PATH }}'
-          dotnet build --configuration Release --output ./output
-          popd
-      
-      - name: Install Azure Functions Core Tools
-        run: npm i -g azure-functions-core-tools@3 --unsafe-perm true
-      
-      #- name: Publish Azure Function App
-      #  run: func azure functionapp publish ${{ env.AZURE_FUNCTIONAPP_NAME }}
-      #  working-directory: ${{ env.AZURE_FUNCTION_PROJ_PATH }}
+        run: dotnet build --configuration Release --output ./output
+        working-directory: ${{ env.AZURE_FUNCTION_PROJ_PATH }}
 
       - name: 'Run Azure Functions Action'
         uses: Azure/functions-action@v1
